@@ -1,0 +1,8 @@
+query {
+  posts {
+    title
+    content
+    tag
+    link
+  }
+}

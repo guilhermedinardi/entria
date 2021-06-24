@@ -1,0 +1,49 @@
+{
+  "name": "todo",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@babel/preset-env": "^7.14.7",
+    "get-graphql-schema": "^2.1.2",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-relay": "^11.0.2",
+    "react-scripts": "2.1.5",
+    "relay-runtime": "^11.0.2"
+  },
+  "devDependencies": {
+    "babel-plugin-relay": "^11.0.2",
+    "graphql": "^15.5.1",
+    "relay-compiler": "^11.0.2"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "scripts": {
+    "eject": "react-scripts eject",
+    "start": "yarn run && react-scripts start",
+    "build": "yarn run && react-scripts build",
+    "relay": "yarn run relay-compiler --src ./src/ --schema schema.graphql --watchman false $@",
+    "test": "react-scripts test"
+  },
+  "Babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      "relay"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
