@@ -1,0 +1,56 @@
+directive @cacheControl(
+  maxAge: Int
+  scope: CacheControlScope
+) on FIELD_DEFINITION | OBJECT | INTERFACE
+
+type Post {
+  _id: ID!
+  title: String!
+  content: String!
+  tag: String!
+  link: String!
+}
+
+input PostInput {
+  title: String!
+  content: String!
+  tag: String!
+  link: String!
+}
+
+type Query {
+  posts: [Post!]!
+  post(id: ID!): Post!
+  users: [User!]!
+  user(id: ID!): User!
+}
+
+type Mutation {
+  createPost(data: PostInput!): Post!
+  updatePost(id: ID!, data: PostInput!): Post!
+  deletePost(id: ID!): Boolean
+  createUser(data: UserInput!): User!
+  updateUser(id: ID!, data: UserInput!): User!
+  deleteUser(id: ID!): Boolean
+}
+
+type User {
+  _id: ID!
+  firstName: String!
+  lastName: String!
+  active: Boolean!
+}
+
+input UserInput {
+  firstName: String!
+  lastName: String!
+  active: Boolean!
+}
+
+enum CacheControlScope {
+  PUBLIC
+  PRIVATE
+}
+
+# The `Upload` scalar type represents a file upload.
+scalar Upload

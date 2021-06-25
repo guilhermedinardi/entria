@@ -23,7 +23,7 @@
     "eject": "react-scripts eject",
     "start": "yarn run && react-scripts start",
     "build": "yarn run && react-scripts build",
-    "relay": "yarn run relay-compiler --src ./src/ --schema schema.graphql --watchman false $@",
+    "relay": "yarn run relay-compiler --src ./src/ --schema src/data/schema.graphql --watchman false $@",
     "test": "react-scripts test"
   },
   "Babel": {
