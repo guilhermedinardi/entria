@@ -6,7 +6,7 @@ Criar uma aplicação fullstack, utilizando Relay.JS no Frontend e GraphQL no Ba
 
 Este projeto é divido em duas partes:
 1. Backend (pasta server) 
-2. Frontend (pasta web)
+2. Frontend (pasta client)
 
 💡 O Frontend precisa que o Backend esteja sendo executado para funcionar.
 
