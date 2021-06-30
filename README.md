@@ -47,7 +47,7 @@ $ cd entria
 $ cd client
 
 # Instale as dependências
-$ yanr install
+$ yarn install
 
 # Execute a aplicação em modo de desenvolvimento
 $ yarn start
