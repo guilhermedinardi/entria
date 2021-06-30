@@ -1,33 +1,29 @@
 
-import { React } from 'react'
+import { React, Component } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import styled from 'styled-components'
 
-import {  RelayEnvironmentProvider, useLazyLoadQuery } from 'react-relay';
-import graphql from 'babel-plugin-relay/macro';
-import Environment from './relay/Environment';
-
-import { AppQuery } from './__generated__/AppQuery.graphql';
-
-
-const App = () => {
-const appQuery = useLazyLoadQuery <AppQuery>
-graphql `
-  query AppQuery{
-    posts {
-      title
-      content
-      tag
-      link
-    }
-  }
+import PostHome from './Components/PostHome'
+import PostDetail from './Components/PostDetail';
+const Container = styled.div`
+  max-width: 1200px;
+  margin: auto;
+  padding: 0px 15px 40px 15px;
 `
-  const posts = appQuery
-  console.log(posts)
-  return (
-    <RelayEnvironmentProvider environment={Environment}>
-      <h2>{posts}</h2>
-      <p>TODO</p>
-    </RelayEnvironmentProvider>
-  );
+
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <Container>
+            <Route exact path="/" component={PostHome} />
+            <Route exact path="/edit/:id" component={PostDetail} />
+          </Container>
+        </div>
+      </Router>
+    )
+  }
 }
 
 export default App;

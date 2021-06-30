@@ -8,8 +8,8 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type AppQueryVariables = {||};
-export type AppQueryResponse = {|
+export type PostDetailQueryVariables = {||};
+export type PostDetailQueryResponse = {|
   +posts: $ReadOnlyArray<{|
     +title: string,
     +content: string,
@@ -17,15 +17,15 @@ export type AppQueryResponse = {|
     +link: string,
   |}>
 |};
-export type AppQuery = {|
-  variables: AppQueryVariables,
-  response: AppQueryResponse,
+export type PostDetailQuery = {|
+  variables: PostDetailQueryVariables,
+  response: PostDetailQueryResponse,
 |};
 */
 
 
 /*
-query AppQuery {
+query PostDetailQuery {
   posts {
     title
     content
@@ -82,7 +82,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "AppQuery",
+    "name": "PostDetailQuery",
     "selections": (v0/*: any*/),
     "type": "Query",
     "abstractKey": null
@@ -91,20 +91,20 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "AppQuery",
+    "name": "PostDetailQuery",
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "ac03a53e44c6c369888a14b78537bdb4",
+    "cacheID": "0532dd386e7329522f8247f0708dd0bc",
     "id": null,
     "metadata": {},
-    "name": "AppQuery",
+    "name": "PostDetailQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  posts {\n    title\n    content\n    tag\n    link\n  }\n}\n"
+    "text": "query PostDetailQuery {\n  posts {\n    title\n    content\n    tag\n    link\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'cf931b5a805fc04e5593ca1046742677';
+(node/*: any*/).hash = '309b1f002456072c2fde68378bb2611d';
 
 module.exports = node;
