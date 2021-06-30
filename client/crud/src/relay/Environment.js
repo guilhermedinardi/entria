@@ -1,4 +1,3 @@
-// your-app-name/src/RelayEnvironment.js
 import {Environment, Network, RecordSource, Store} from 'relay-runtime';
 import fetchGraphQL from './fetchGraphQL';
 
