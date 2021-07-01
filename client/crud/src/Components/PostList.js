@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import graphql from 'babel-plugin-relay/macro';
-import { createFragmentContainer } from 'react-relay';
+import { useFragment } from 'react-relay';
 import styled from 'styled-components';
 
 import Post from './Post';
@@ -14,20 +14,19 @@ const StyledPostList = styled.div`
   }
 `
 
-class PostList extends Component {
-  render() {
-    return (
-      <StyledPostList>
-        {this.props.posts.edges.map(({node}) => 
-          <Post key={node._id} post={node} /> 
-        )}
-      </StyledPostList>
-    )
-  }
-}
-
-export default createFragmentContainer(PostList, graphql`
-  fragment PostList_viewer on Post {
+const PostList = (props) => {
+  const postList = useFragment(graphql `
+    fragment PostList_viewer on Post {
         ...Post_post
     }   
-`)
+  `,
+  props.postList,
+  )
+
+  return (
+    <StyledPostList>
+        <Post key={postList} postList={postList} /> 
+    </StyledPostList>
+  )
+}
+export default PostList

@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import graphql from 'babel-plugin-relay/macro';
 import { Link } from "react-router-dom";
-import { createFragmentContainer } from 'react-relay'
+import { useFragment } from 'react-relay'
 import styled from 'styled-components'
+
+import Post_post from './__generated__/Post_post.graphql'
 
 const PostItem = styled.div`
   background: #26262d;
@@ -41,26 +43,31 @@ const PostItem = styled.div`
   }
 `
 
-class Post extends Component {
-  render() {
-    return (
-      <PostItem>
-        <div>
-          <h2>{ this.props.title } </h2>
-          <p>{ this.props.content } </p>
-          <p>{ this.props.tag } </p>
-          <Link to={`/post/${this.props.id}`} >{this.props.link}</Link>
-        </div>
-      </PostItem>
-    )
-  }
-}
+const Post = (props) =>{
+  const post = useFragment(Post_post, 
+  graphql` 
+    fragment Post_post on Post {
+      title
+      content
+      tag
+      link
+    
+    }
+  `,
+  props.post,
+  );
 
-export default createFragmentContainer(Post, graphql`
-  fragment Post_post on Post {
-    title
-    content
-    tag
-    link
-  }
-`)
+  console.log(post);
+  
+  return (
+    <PostItem>
+      <div>
+        <h2>{post.title} </h2>
+        <p>{post.content} </p>
+        <p>{post.tag} </p>
+        <Link to={`/post/${post.id}`} >{post.link}</Link>
+      </div>
+    </PostItem>
+  )
+}
+export default Post

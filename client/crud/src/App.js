@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import PostHome from './Components/PostHome'
 import PostDetail from './Components/PostDetail';
+
 const Container = styled.div`
   max-width: 1200px;
   margin: auto;
