@@ -16,7 +16,7 @@ class PostHome extends Component {
                   if (error) {
                     return <span>{error.toString()}</span>;
                   }else if (props) {
-                    return <PostList posts={props.posts} />;
+                    return <PostList query={PostQuery} />;
                   }
                   return <span>loading</span>
                 }} />
