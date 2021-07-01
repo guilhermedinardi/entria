@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { useFragment } from 'react-relay'
 import styled from 'styled-components'
 
-import Post_post from './__generated__/Post_post.graphql'
-
 const PostItem = styled.div`
   background: #26262d;
   display: flex;
@@ -44,9 +42,8 @@ const PostItem = styled.div`
 `
 
 const Post = (props) =>{
-  const post = useFragment(Post_post, 
-  graphql` 
-    fragment Post_post on Post {
+  const post = useFragment(graphql` 
+    fragment PostList_viewer on Post {
       title
       content
       tag
@@ -55,19 +52,16 @@ const Post = (props) =>{
     }
   `,
   props.post,
-  );
+  ); 
 
-  console.log(post);
-  
-  return (
-    <PostItem>
-      <div>
-        <h2>{post.title} </h2>
-        <p>{post.content} </p>
-        <p>{post.tag} </p>
-        <Link to={`/post/${post.id}`} >{post.link}</Link>
-      </div>
-    </PostItem>
-  )
+
+  return(
+    <div>
+      <h2>{post.title}</h2>
+      <span>{post.content}</span>
+      <p>{post.tag.split(',')}</p>
+      <a href={post.link}>{post.link}</a>
+    </div>
+    )
 }
 export default Post

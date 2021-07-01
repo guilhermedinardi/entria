@@ -30,10 +30,6 @@ query PostHomeQuery {
 }
 
 fragment PostList_viewer on Post {
-  ...Post_post
-}
-
-fragment Post_post on Post {
   title
   content
   tag
@@ -116,12 +112,12 @@ const node/*: ConcreteRequest*/ = {
     ]
   },
   "params": {
-    "cacheID": "388345e023c1cd290fdb98b9fed7eff8",
+    "cacheID": "a91d7998fb52e44ac71cfa807a685736",
     "id": null,
     "metadata": {},
     "name": "PostHomeQuery",
     "operationKind": "query",
-    "text": "query PostHomeQuery {\n  posts {\n    ...PostList_viewer\n  }\n}\n\nfragment PostList_viewer on Post {\n  ...Post_post\n}\n\nfragment Post_post on Post {\n  title\n  content\n  tag\n  link\n}\n"
+    "text": "query PostHomeQuery {\n  posts {\n    ...PostList_viewer\n  }\n}\n\nfragment PostList_viewer on Post {\n  title\n  content\n  tag\n  link\n}\n"
   }
 };
 // prettier-ignore
