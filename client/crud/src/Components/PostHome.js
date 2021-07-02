@@ -1,35 +1,28 @@
-import React, { Component } from 'react'
-import { QueryRenderer } from 'react-relay';
+import React from 'react'
 import graphql from 'babel-plugin-relay/macro';
-import Environment from '../relay/Environment';
+import { useLazyLoadQuery } from 'react-relay';
 
-import PostList from './PostList';
+import Post from './Post'
 
-class PostHome extends Component {
-    render() {
-        return (
-            <QueryRenderer
-            environment={Environment}
-            query={PostQuery}
-            render={({ error, props }) => {
-                console.log('qr: ', error, props);
-                  if (error) {
-                    return <span>{error.toString()}</span>;
-                  }else if (props) {
-                    return <PostList query={PostQuery} />;
-                  }
-                  return <span>loading</span>
-                }} />
-        )
-    }
+const PostHome = () =>{
+  const data = useLazyLoadQuery(PostQuery)
+  console.log(data)
+  return (
+    <div>
+      {data.posts.map(post =>(
+        <Post key={post.__id} post={post}></Post>
+      ))}
+    </div>
+  )
+  
 }
 
 const PostQuery = graphql`
     query PostHomeQuery {
       posts{
-      ...PostList_viewer
+        ...PostList_viewer   
+      }
     }
-  }
 `
 
 export default PostHome
