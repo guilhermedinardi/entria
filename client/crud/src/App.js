@@ -5,7 +5,7 @@ import { RelayEnvironmentProvider } from 'react-relay';
 import styled from 'styled-components'
 import Environment from './relay/Environment'
 import PostHome from './Components/PostHome'
-import PostDetail from './Components/PostDetail';
+import CreatePost from './Components/CreatePost';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -22,7 +22,7 @@ const App = () =>{
             <div>
               <Container>
                 <Route exact path="/" component={PostHome} />
-                <Route exact path="/edit/:id" component={PostDetail} />
+                <Route exact path="/edit" component={CreatePost} />
               </Container>
             </div>
           </Suspense>
