@@ -6,7 +6,6 @@ import Post from './Post'
 
 const PostHome = () =>{
   const data = useLazyLoadQuery(PostQuery)
-  console.log(data)
   return (
     <div>
       {data.posts.map(post =>(

@@ -1,11 +1,10 @@
 import React from 'react'
 import graphql from 'babel-plugin-relay/macro';
-import { Link } from "react-router-dom";
 import { useFragment } from 'react-relay'
 import styled from 'styled-components'
 
 const PostItem = styled.div`
-  background: #26262d;
+  background: #fff;
   display: flex;
   flex-direction: column;
   div {
@@ -48,20 +47,20 @@ const Post = (props) =>{
       content
       tag
       link
-    
     }
   `,
   props.post,
   ); 
 
-
   return(
-    <div>
-      <h2>{post.title}</h2>
-      <span>{post.content}</span>
-      <p>{post.tag.split(',')}</p>
-      <a href={post.link}>{post.link}</a>
-    </div>
+    <PostItem>
+      <div>
+        <h2>{post.title}</h2>
+        <span>{post.content}</span>
+        <p>{post.tag.split(',')}</p>
+        <a href={post.link}>{post.link}</a>
+      </div>
+    </PostItem>
     )
 }
 export default Post
