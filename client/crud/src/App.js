@@ -5,7 +5,7 @@ import { RelayEnvironmentProvider } from 'react-relay';
 import styled from 'styled-components'
 import Environment from './relay/Environment'
 import PostHome from './Components/PostHome'
-import CreatePost from './Components/CreatePost';
+import PostCreate from './Components/PostCreate';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -19,12 +19,10 @@ const App = () =>{
       <RelayEnvironmentProvider environment={Environment}>
         <Router>
           <Suspense fallback={<div>Carregando...</div>}>
-            <div>
               <Container>
+                <Route exact path="/" component={PostCreate} />
                 <Route exact path="/" component={PostHome} />
-                <Route exact path="/edit" component={CreatePost} />
               </Container>
-            </div>
           </Suspense>
         </Router>
       </RelayEnvironmentProvider>
