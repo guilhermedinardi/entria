@@ -16,8 +16,7 @@ const Schema = new mongoose.Schema({
     link: {
         type: String,
         required: true,
-    },
-
+    }
 })
-
-export default mongoose.model('Post', Schema)
+const PostModel = mongoose.model('Post', Schema)
+export default PostModel
