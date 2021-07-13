@@ -1,5 +1,7 @@
-import createPost from "./createPost"
+import PostCreate from "./PostCreate"
+import PostDelete from "./PostDelete"
 
 export default {
-    createPost
+    PostCreate,
+    PostDelete,
 }
