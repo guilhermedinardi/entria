@@ -34,7 +34,7 @@ const mutation = mutationWithClientMutationId({
             },
         )
         return {
-            postUpdate,
+            post: postUpdate,
             success: 'Post updated successfully',  
             error: null,
         }
@@ -42,11 +42,10 @@ const mutation = mutationWithClientMutationId({
     outputFields: {
         PostUpdate: {
             type: PostConnection.edgeType,
-            resolve: async ({ postUpdate }) => {
-                console.log('Post Update', postUpdate)
+            resolve: async ({ post }) => {
                 return {
-                    cursor: toGlobalId('Update', postUpdate._id),
-                    node: postUpdate,
+                    cursor: toGlobalId('Update', post._id),
+                    node: post,
                 }
             },
         },
