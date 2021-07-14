@@ -1,7 +1,9 @@
-import PostCreate from "./PostCreate"
-import PostDelete from "./PostDelete"
+import PostCreateMutation from "./PostCreateMutation"
+import PostUpdateMutation from "./PostUpdateMutation"
+import PostDeleteMutation from "./PostDeleteMutation"
 
 export default {
-    PostCreate,
-    PostDelete,
+    PostCreateMutation,
+    PostUpdateMutation,
+    PostDeleteMutation,
 }
