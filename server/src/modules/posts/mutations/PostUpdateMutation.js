@@ -40,7 +40,7 @@ const mutation = mutationWithClientMutationId({
         }
     },
     outputFields: {
-        PostUpdate: {
+        postEdge: {
             type: PostConnection.edgeType,
             resolve: async ({ post }) => {
                 return {
