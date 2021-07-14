@@ -1,5 +1,5 @@
 import { GraphQLObjectType, GraphQLNonNull } from 'graphql';
-import { connectionArgs } from 'graphql-relay';
+import { connectionArgs, connectionFromArray } from 'graphql-relay';
 import { PostConnection } from '../modules/posts/PostType';
 
 import * as PostLoader from '../modules/posts/PostLoader';
@@ -13,7 +13,10 @@ const QueryType = new GraphQLObjectType({
             args: {
                 ...connectionArgs
             },
-            resolve: async (_, args, context) => await PostLoader.loadAll(context, args)
+            resolve: async (_, args, context) => {
+                const data = await PostLoader.loadAll()
+                return connectionFromArray(data, args)
+            }
         }
     })
 })
