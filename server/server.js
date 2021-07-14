@@ -2,6 +2,7 @@ import { ApolloServer } from 'apollo-server';
 import mongoose from 'mongoose';
 import { schema } from './src/schema/schema';
 
+
 function startServer() {
     mongoose.connect('mongodb://localhost:27017/graphql', {
         useNewUrlParser: true,
