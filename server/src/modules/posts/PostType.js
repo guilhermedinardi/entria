@@ -7,7 +7,7 @@ const PostType = new GraphQLObjectType({
     fields: () => ({
         id: globalIdField('Post'),
         _id: {
-            type: GraphQLID,
+            type: GraphQLString,
             resolve: post => post._id
         },
         title: {
@@ -28,8 +28,8 @@ const PostType = new GraphQLObjectType({
         },
     })
 })
-export default PostType
 
 export const PostConnection = connectionDefinitions({
     nodeType: PostType
 })
+export default PostType
