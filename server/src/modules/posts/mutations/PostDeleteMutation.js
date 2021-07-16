@@ -1,5 +1,5 @@
 import {GraphQLNonNull, GraphQLString} from 'graphql';
-import { mutationWithClientMutationId, toGlobalId }  from 'graphql-relay';
+import { mutationWithClientMutationId, toGlobalId, fromGlobalId }  from 'graphql-relay';
 
 import PostModel from '../PostModel'
 import PostType from '../PostType' 
@@ -8,11 +8,12 @@ import * as PostLoader from '../PostLoader';
 const mutation = mutationWithClientMutationId ({
     name: 'PostDelete',
     inputFields: {
-        id: {
+        postId: {
             type: GraphQLNonNull(GraphQLString),
         }
     },
-    mutateAndGetPayload: async ({ id }) => {
+    mutateAndGetPayload: async ({ postId }) => {
+        const { id } = fromGlobalId(postId)
         const postDelete = await PostModel.findByIdAndDelete({ _id: id })
     
         return {
