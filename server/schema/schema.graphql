@@ -1,5 +1,10 @@
 # The root of all queries
 type Query {
+  # Fetches an object given its ID
+  node(
+    # The ID of an object
+    id: ID!
+  ): Node
   posts(
     # Returns the items in the list that come after the specified cursor.
     after: String
@@ -13,6 +18,12 @@ type Query {
     # Returns the last n items from the list.
     last: Int
   ): PostConnection!
+}
+
+# An object with an ID
+interface Node {
+  # The id of the object.
+  id: ID!
 }
 
 # A connection to a list of items.
@@ -88,7 +99,7 @@ type PostUpdatePayload {
 }
 
 input PostUpdateInput {
-  id: String!
+  postId: String!
   title: String!
   content: String!
   tag: String!
@@ -104,6 +115,6 @@ type PostDeletePayload {
 }
 
 input PostDeleteInput {
-  id: String!
+  postId: String!
   clientMutationId: String
 }
