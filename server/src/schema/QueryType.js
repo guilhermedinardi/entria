@@ -1,13 +1,15 @@
 import { GraphQLObjectType, GraphQLNonNull } from 'graphql';
-import { connectionArgs, connectionFromArray } from 'graphql-relay';
-import { PostConnection } from '../modules/posts/PostType';
-
+import { connectionArgs, connectionFromArray, globalIdField } from 'graphql-relay';
+import { PostConnection, PostEdge } from '../modules/posts/PostType';
+import {objectIdResolver} from  '@entria/graphql-mongo-helpers'
 import * as PostLoader from '../modules/posts/PostLoader';
+import { nodeField } from '../modules/node/typeRegister'
 
 const QueryType = new GraphQLObjectType({
     name: 'Query',
     description: 'The root of all queries',
     fields: () => ({
+        node: nodeField,
         posts: {
             type: GraphQLNonNull(PostConnection.connectionType),
             args: {

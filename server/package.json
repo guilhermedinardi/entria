@@ -7,7 +7,10 @@
     "dev": "npx nodemon --exec babel-node index.js -e js,gql"
   },
   "dependencies": {
+    "@entria/graphql-mongo-helpers": "^1.0.1",
+    "@entria/graphql-mongoose-loader": "^4.3.2",
     "apollo-server": "^2.25.1",
+    "dataloader": "^2.0.0",
     "graphql": "^15.5.1",
     "graphql-relay": "^0.8.0",
     "merge-graphql-schemas": "^1.7.8",

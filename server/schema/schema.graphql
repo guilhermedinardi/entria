@@ -1,25 +1,120 @@
-type Post {
-    _id: ID!
-    title: String!
-    content: String!
-    tag: String!
-    link: String!
-}
-
-input PostInput {
-    title: String!
-    content: String!
-    tag: String!
-    link: String!
-}
-
+# The root of all queries
 type Query {
-    posts: [Post!]!
-    post(id: ID!): Post!
+  # Fetches an object given its ID
+  node(
+    # The ID of an object
+    id: ID!
+  ): Node
+  posts(
+    # Returns the items in the list that come after the specified cursor.
+    after: String
+
+    # Returns the first n items from the list.
+    first: Int
+
+    # Returns the items in the list that come before the specified cursor.
+    before: String
+
+    # Returns the last n items from the list.
+    last: Int
+  ): PostConnection!
+}
+
+# An object with an ID
+interface Node {
+  # The id of the object.
+  id: ID!
+}
+
+# A connection to a list of items.
+type PostConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [PostEdge]
+}
+
+# Information about pagination in a connection.
+type PageInfo {
+  # When paginating forwards, are there more items?
+  hasNextPage: Boolean!
+
+  # When paginating backwards, are there more items?
+  hasPreviousPage: Boolean!
+
+  # When paginating backwards, the cursor to continue.
+  startCursor: String
+
+  # When paginating forwards, the cursor to continue.
+  endCursor: String
+}
+
+# An edge in a connection.
+type PostEdge {
+  # The item at the end of the edge
+  node: Post
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+# Post Type
+type Post {
+  # The ID of an object
+  id: ID!
+  _id: String
+  title: String
+  content: String
+  tag: String
+  link: String
 }
 
 type Mutation {
-    createPost(data: PostInput!): Post!
-    updatePost(id: ID!, data: PostInput!): Post!
-    deletePost(id: ID!): Boolean
+  PostCreateMutation(input: PostCreateInput!): PostCreatePayload
+  PostUpdateMutation(input: PostUpdateInput!): PostUpdatePayload
+  PostDeleteMutation(input: PostDeleteInput!): PostDeletePayload
+}
+
+type PostCreatePayload {
+  postEdge: PostEdge
+  error: String
+  success: String
+  clientMutationId: String
+}
+
+input PostCreateInput {
+  title: String!
+  content: String!
+  tag: String!
+  link: String!
+  clientMutationId: String
+}
+
+type PostUpdatePayload {
+  postEdge: PostEdge
+  error: String
+  success: String
+  clientMutationId: String
+}
+
+input PostUpdateInput {
+  postId: String!
+  title: String!
+  content: String!
+  tag: String!
+  link: String!
+  clientMutationId: String
+}
+
+type PostDeletePayload {
+  deleteId: String
+  error: String
+  success: String
+  clientMutationId: String
+}
+
+input PostDeleteInput {
+  postId: String!
+  clientMutationId: String
 }

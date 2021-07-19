@@ -1,5 +1,5 @@
 import {GraphQLNonNull, GraphQLString} from 'graphql';
-import { mutationWithClientMutationId, toGlobalId }  from 'graphql-relay';
+import { mutationWithClientMutationId, toGlobalId, fromGlobalId }  from 'graphql-relay';
 
 import * as PostLoader from '../PostLoader';
 import PostModel from '../PostModel'
@@ -8,7 +8,7 @@ import { PostConnection } from '../PostType'
 const mutation = mutationWithClientMutationId({
     name: 'PostUpdate',
     inputFields: {
-        id: {
+        postId: {
             type: GraphQLNonNull(GraphQLString),
         },
         title: {
@@ -24,7 +24,8 @@ const mutation = mutationWithClientMutationId({
             type: GraphQLNonNull(GraphQLString),
         },
     },
-    mutateAndGetPayload: async ({ id, title, content, tag, link }) => {
+    mutateAndGetPayload: async ({ postId, title, content, tag, link }) => {
+        const { id, type } = fromGlobalId(postId)
         const postUpdate = await PostModel.findByIdAndUpdate({ _id: id }, 
             { 
                 title, 
@@ -40,11 +41,11 @@ const mutation = mutationWithClientMutationId({
         }
     },
     outputFields: {
-        PostUpdate: {
+        postEdge: {
             type: PostConnection.edgeType,
             resolve: async ({ post }) => {
                 return {
-                    cursor: toGlobalId('Update', post._id),
+                    cursor: toGlobalId('Post', post._id),
                     node: post,
                 }
             },
