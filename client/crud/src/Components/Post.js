@@ -54,21 +54,9 @@ const Post = (props) =>{
   `,
   props.post,
   ); 
-  
-  const postDeleteMutation = useMutation(PostDeleteMutation)
 
-  const remove = useCallback(() => {
-    const config = {
-      variables: {
-        input: {
-          postId: post.id,
-        },
-      },
-      optimisticResponse: post.id ? postDeleteOptimisticResponse(post) : 'error'
-    }
-    const mutationFn = post.id ? postDeleteMutation : 'not found' 
-    
-  },[post])
+  const [remove] = useMutation(PostDeleteMutation)
+  
   return(
     <PostItem>
       <div>
@@ -76,7 +64,20 @@ const Post = (props) =>{
         <span>{post.content}</span>
         <p>{post.tag.split(',')}</p>
         <a href={post.link}>{post.link}</a>
-        <button onClick={() => remove()}> Remover
+        <button 
+          onClick={() => {
+            remove({
+              variables: {
+                input: {
+                  postId: post.id,
+                },
+              },
+              onCompleted(data){
+                console.log(data)
+              }
+            });
+        }}> 
+          Remover
         </button>
       </div>
     </PostItem>
