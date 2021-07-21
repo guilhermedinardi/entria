@@ -68,10 +68,6 @@ const Post = (props) =>{
     }
     const mutationFn = post.id ? postDeleteMutation : 'not found' 
     
-    console.log(remove)
-    console.log(config)
-    console.log(mutationFn)
-    
   },[post])
   return(
     <PostItem>
