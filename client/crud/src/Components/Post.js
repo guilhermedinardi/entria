@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import graphql from 'babel-plugin-relay/macro';
-import { useFragment } from 'react-relay'
+import { useFragment, useMutation } from 'react-relay'
 import styled from 'styled-components'
+
+import { PostDeleteMutation, postDeleteOptimisticResponse } from './PostDelete';
 
 const PostItem = styled.div`
   background: #fff;
@@ -47,11 +49,30 @@ const Post = (props) =>{
       content
       tag
       link
+      id
     }
   `,
   props.post,
   ); 
+  
+  const postDeleteMutation = useMutation(PostDeleteMutation)
 
+  const remove = useCallback(() => {
+    const config = {
+      variables: {
+        input: {
+          postId: post.id,
+        },
+      },
+      optimisticResponse: post.id ? postDeleteOptimisticResponse(post) : 'error'
+    }
+    const mutationFn = post.id ? postDeleteMutation : 'not found' 
+    
+    console.log(remove)
+    console.log(config)
+    console.log(mutationFn)
+    
+  },[post])
   return(
     <PostItem>
       <div>
@@ -59,6 +80,8 @@ const Post = (props) =>{
         <span>{post.content}</span>
         <p>{post.tag.split(',')}</p>
         <a href={post.link}>{post.link}</a>
+        <button onClick={() => remove()}> Remover
+        </button>
       </div>
     </PostItem>
     )
