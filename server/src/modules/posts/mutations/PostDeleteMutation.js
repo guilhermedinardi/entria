@@ -26,7 +26,7 @@ const mutation = mutationWithClientMutationId ({
         deleteId:{
             type: GraphQLString,
             resolve: async ({ id }) => {
-                return toGlobalId('Delete', id._id)
+                return toGlobalId('Post', id._id)
             }
         },
         error: {
