@@ -1,9 +1,11 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import graphql from 'babel-plugin-relay/macro';
-import { useFragment, useMutation } from 'react-relay'
+import { useFragment } from 'react-relay'
 import styled from 'styled-components'
 
-import { PostDeleteMutation, postDeleteOptimisticResponse } from './PostDelete';
+import { default as useRemovePostMutation } from './PostDelete';
+
+import PostCreate from './create/PostCreate'
 
 const PostItem = styled.div`
   background: #fff;
@@ -55,32 +57,26 @@ const Post = (props) =>{
   props.post,
   ); 
 
-  const [remove] = useMutation(PostDeleteMutation)
-  
+  const [remove] = useRemovePostMutation() 
+
   return(
-    <PostItem>
-      <div>
-        <h2>{post.title}</h2>
-        <span>{post.content}</span>
-        <p>{post.tag.split(',')}</p>
-        <a href={post.link}>{post.link}</a>
-        <button 
-          onClick={() => {
-            remove({
-              variables: {
-                input: {
-                  postId: post.id,
-                },
-              },
-              onCompleted(data){
-                console.log(data)
-              }
-            });
-        }}> 
-          Remover
-        </button>
-      </div>
-    </PostItem>
-    )
+    <>
+      <PostCreate post={post} />
+      <PostItem>
+        <div>
+          <h2>{post.title}</h2>
+          <span>{post.content}</span>
+          <p>{post.tag.split(',')}</p>
+          <a href={post.link}>{post.link}</a>
+          <button 
+            onClick={() => {
+              remove(post.id)
+          }}> 
+            Remover
+          </button>
+        </div>
+      </PostItem>
+    </>
+  )  
 }
 export default Post
