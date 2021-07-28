@@ -1,12 +1,25 @@
 import {Environment, Network, RecordSource, Store} from 'relay-runtime';
-import fetchGraphQL from './fetchGraphQL';
 
-async function fetchRelay(params, variables) {
-  console.log(`fetching query ${params.name} with ${JSON.stringify(variables)}`);
-  return fetchGraphQL(params.text, variables);
+function fetchQuery(operation, variables) {
+  return fetch('http://localhost:4000', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      // Auth Headers goes here
+    },
+    body: JSON.stringify({
+      query: operation.text,
+      variables,
+    }),
+  }).then(response => {
+    return response.json();
+  });
+  
 }
 
-export default new Environment({
-  network: Network.create(fetchRelay),
+const env = new Environment({
+  network: Network.create(fetchQuery),
   store: new Store(new RecordSource()),
 });
+export default env
