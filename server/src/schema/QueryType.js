@@ -1,7 +1,6 @@
 import { GraphQLObjectType, GraphQLNonNull } from 'graphql';
 import { connectionArgs, connectionFromArray, globalIdField } from 'graphql-relay';
 import { PostConnection, PostEdge } from '../modules/posts/PostType';
-import {objectIdResolver} from  '@entria/graphql-mongo-helpers'
 import * as PostLoader from '../modules/posts/PostLoader';
 import { nodeField } from '../modules/node/typeRegister'
 
