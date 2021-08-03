@@ -28,17 +28,15 @@ const PostCreate = (props) => {
     const [addTool] = usePostCreateMutation()
 
     const handlePostCreate = (event) => {
-            
-            event.preventDefault()
-            const payload = { 
-                title,
-                content,
-                tag,
-                link,
-              }
-              
-              addTool(payload)
-            }
+        event.preventDefault()
+        const payload = { 
+            title,
+            content,
+            tag,
+            link,
+        }    
+        addTool(payload)
+    }
     return (
         <form onSubmit={handlePostCreate}>
             <input 
