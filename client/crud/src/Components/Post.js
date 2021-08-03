@@ -5,8 +5,6 @@ import styled from 'styled-components'
 
 import { default as useRemovePostMutation } from './PostDelete';
 
-import PostCreate from './create/PostCreate'
-
 const PostItem = styled.div`
   background: #fff;
   display: flex;
@@ -61,12 +59,11 @@ const Post = (props) =>{
 
   return(
     <>
-      <PostCreate post={post} />
       <PostItem>
         <div>
           <h2>{post.title}</h2>
           <span>{post.content}</span>
-          <p>{post.tag.split(',')}</p>
+          <p>{post.tag}</p>
           <a href={post.link}>{post.link}</a>
           <button 
             onClick={() => {
