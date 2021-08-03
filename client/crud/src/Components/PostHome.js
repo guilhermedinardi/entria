@@ -3,6 +3,7 @@ import graphql from 'babel-plugin-relay/macro';
 import { usePaginationFragment } from 'react-relay';
 
 import Post from './Post'
+import PostCreate from './create/PostCreate'
 
 const PostHome = (props) => {
   const { data, loadNext, isLoadingNext } = usePaginationFragment(
@@ -20,6 +21,7 @@ const PostHome = (props) => {
           edges {
             node {
              ...PostList_viewer
+             ...PostCreate_post
             }
           }
         }
@@ -38,12 +40,15 @@ const PostHome = (props) => {
   }, [isLoadingNext, loadNext]);
 
   return (
+    <>
     <div>
       {posts.edges.map(({ node }) => (
           <Post key={node.id} post={node} />
         ))}
         <button onClick={loadMore}> Load More</button>
     </div>
+    <PostCreate />
+    </>
   )
   
 }
