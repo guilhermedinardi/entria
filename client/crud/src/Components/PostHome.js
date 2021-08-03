@@ -46,6 +46,7 @@ const PostHome = (props) => {
       {posts.edges.map(({ node }) => (
           <Post key={node.id} post={node} />
         ))}
+        <button onClick={loadMore}> Load More</button>
     </div>
     </>
   )
