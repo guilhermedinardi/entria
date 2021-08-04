@@ -53,8 +53,8 @@ const PostUpdate = (props) => {
         type={"text"}
         placeholder={"Enter link tool"}
       />
-    <button type='submit'>
-          Update
+      <button type='submit'>
+        Update
       </button>
     </form>
   )
