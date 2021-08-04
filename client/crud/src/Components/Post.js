@@ -3,6 +3,7 @@ import graphql from 'babel-plugin-relay/macro';
 import { useFragment } from 'react-relay'
 import styled from 'styled-components'
 
+import PostUpdate from './update/PostUpdate'
 import { default as useRemovePostMutation } from './PostDelete';
 
 const PostItem = styled.div`
@@ -72,6 +73,7 @@ const Post = (props) =>{
             Remover
           </button>
         </div>
+        <PostUpdate post={post.id} />
       </PostItem>
     </>
   )  
