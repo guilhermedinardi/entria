@@ -1,7 +1,6 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import graphql from 'babel-plugin-relay/macro';
 import { useFragment } from 'react-relay';
-import styled from 'styled-components'
 
 import { default as usePostCreateMutation } from './PostCreateMutation'
   
