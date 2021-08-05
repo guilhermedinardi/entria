@@ -1,43 +1,79 @@
-import React from 'react'
+import React, { useState } from 'react'
 import graphql from 'babel-plugin-relay/macro';
 import { useFragment } from 'react-relay'
 import styled from 'styled-components'
 
+import Modal from './modal/Modal'
 import PostUpdate from './update/PostUpdate'
 import { default as useRemovePostMutation } from './PostDelete';
 
 const PostItem = styled.div`
-  background: #fff;
+  background: #E7E7E7;
   display: flex;
   flex-direction: column;
-  div {
-    padding: 0px 15px;
+  border-radius: 20px;
+  width: 100%;
+  .posts {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    h2 {
-      color: #ffdd46;
-      margin-bottom: 0px;
+    width: 90%;
+    padding: 15px;
+    .post-title {
+      color: #5173E3;
+      margin-bottom: 10px;
     }
-    p {
-      color: #797979;
-      font-size: 0.9rem;
+    .post-content {
+      color: #363636;
+      font-size: 0.8rem;
     }
-    a {
-      border-top: 1px solid #383838;
-      text-align: center;
-      padding: 10px;
+    .post-tag{
+      color: #363636;
+      font-size: 0.8rem;
+    }
+    .post-link {
+      font-size: 0.8em;
+      text-align: left;
       margin-bottom: 5px;
       text-decoration: none;
       color: #9c9c9c;
       margin-top: auto;
-      -webkit-transition: all 300ms ease;
-      -moz-transition: all 300ms ease;
-      -ms-transition: all 300ms ease;
-      -o-transition: all 300ms ease;
-      transition: all 300ms ease;
       &:hover {
-        color: #ffdd46;
+        color: #C1D53F;
+      }
+    }
+    .posts-btn{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding: 10px;
+      .btn-remove{
+        border: none;
+        border-radius: 15px;
+        width: 50%;
+        height: 5vh;
+        background-color: #E64848;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 0.8em;
+        &:hover{
+          background: #fff;
+          color: #E64848;
+        }
+      } 
+      .btn-update{
+        border: none;
+        border-radius: 15px;
+        width: 50%;
+        height: 5vh;
+        background-color: #5173E3;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 0.8em;
+        &:hover{
+          background: #ffffff;
+          color: #5173E3;
+        }
       }
     }
   }
@@ -57,25 +93,44 @@ const Post = (props) =>{
   ); 
 
   const [remove] = useRemovePostMutation() 
+  const [show, setShow] = useState(false);
 
   return(
-    <>
       <PostItem>
-        <div>
-          <h2>{post.title}</h2>
-          <span>{post.content}</span>
-          <p>{post.tag}</p>
-          <a href={post.link}>{post.link}</a>
-          <button 
-            onClick={() => {
-              remove(post.id)
-          }}> 
-            Remover
-          </button>
+        <div className="posts">
+          <h2 className="post-title">client/crud/src/Components/Post.js{post.title}</h2>
+          <span className="post-content">{post.content}</span>
+          <p className="post-tag">{post.tag}</p>
+          <a href={post.link} className="post-link">{post.link}</a>
+          <div className="posts-btn">
+            <button
+              className="btn-remove"
+              onClick={() => {
+                remove(post.id)
+            }}> 
+              Remover
+            </button>
+            <button 
+              onClick={() => 
+                setShow(!show)
+              }
+              className="btn-update"> 
+                Update 
+            </button>
+          </div>
         </div>
-        <PostUpdate post={post.id} />
+        
+        { 
+        show 
+        ? 
+        <Modal onClose={() => setShow(!show)}>
+          <PostUpdate post={post.id} /> 
+        </Modal> 
+        : 
+        null 
+        }
+
       </PostItem>
-    </>
   )  
 }
 export default Post
