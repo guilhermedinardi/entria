@@ -5,32 +5,35 @@ import styled from 'styled-components'
 
 import Post from './Post'
 
+const Content = styled.div`
+  margin: 0px auto;
+`
 const Home = styled.div`
-  .home{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    width: 100%;
-  }
-  .content-btn{
-    display: flex;
-    justify-content: center;
-    .btn-load-posts{
-      border: none;
-      border-radius: 20px;
-      margin: 2em;
-      width: 20%;
-      height: 5vh;
-      background-color: #5173E3;
-      color: #ffffff;
-      cursor: pointer;
-      font-size: 0.8em;
-        &:hover{
-          background: #ffffff;
-          color: #5173E3;
-        }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+`
+
+const Button = styled.div `
+  display: flex;
+  justify-content: center;
+`
+
+const ButtonLoadMore = styled.button`
+  border: none;
+  border-radius: 20px;
+  margin: 2em;
+  width: 10em;
+  height: 3em;
+  background-color: #474973;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 0.8em;
+    &:hover{
+      background: #ffffff;
+      color: #161B33;
     }
-  }
 `
 
 const PostHome = (props) => {
@@ -68,16 +71,16 @@ const PostHome = (props) => {
   }, [isLoadingNext, loadNext]);
 
   return (
-    <Home>
-      <div className="home">
+    <Content>
+      <Home>
         {posts.edges.map(({ node }) => (
           <Post key={node.id} post={node} />
         ))}
-      </div>
-      <div className="content-btn">
-        <button onClick={loadMore} className="btn-load-posts"> Load More</button>
-      </div>
-    </Home>
+      </Home>
+      <Button>
+        <ButtonLoadMore onClick={loadMore} className="btn-load-posts"> Load More</ButtonLoadMore>
+      </Button>
+    </Content>
   )
   
 }
