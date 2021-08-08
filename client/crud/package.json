@@ -29,6 +29,8 @@
   },
   "devDependencies": {
     "babel-plugin-relay": "^11.0.2",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.24.0",
     "graphql": "^15.5.1",
     "relay-compiler": "^11.0.2",
     "relay-config": "^11.0.2"
