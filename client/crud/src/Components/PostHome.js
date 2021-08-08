@@ -10,9 +10,12 @@ const Content = styled.div`
 `
 const Home = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 20px;
   width: 100%;
+  justify-content: center;
+  align-content: center;
+  place-items: center;
 `
 
 const Button = styled.div `
@@ -24,12 +27,12 @@ const ButtonLoadMore = styled.button`
   border: none;
   border-radius: 20px;
   margin: 2em;
-  width: 10em;
-  height: 3em;
-  background-color: #474973;
+  width: 7em;
+  height: 3vh;
+  background-color: #F2AF29;
+  font-size: 0.9em;
   color: #ffffff;
   cursor: pointer;
-  font-size: 0.8em;
     &:hover{
       background: #ffffff;
       color: #161B33;
