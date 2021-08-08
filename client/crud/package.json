@@ -35,6 +35,14 @@
     "relay-compiler": "^11.0.2",
     "relay-config": "^11.0.2"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged":{
+    "*.js": "prettier --write"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
