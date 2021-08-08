@@ -8,7 +8,7 @@ import PostUpdate from './update/PostUpdate'
 import { default as useRemovePostMutation } from './PostDelete';
 
 const PostItem = styled.div`
-  background: #ECEBF3;
+  background: #F7F7F3;
   display: flex;
   flex-direction: column;
   border-radius: 20px;
@@ -22,7 +22,7 @@ const Posts = styled.div`
 `
 
 const Title = styled.h2`
-  color: #0D0C1D;
+  color: #000000;
   margin-bottom: 10px;
 `
 
@@ -52,27 +52,27 @@ const Actions = styled.div`
 const ButtonRemove = styled.button`
   border: none;
   border-radius: 15px;
-  width: 15vw;
-  height: 5vh;
-  background-color: #C20114;
+  width: 10em;
+  height: 3vh;
+  background-color: #AD343E;
   color: #ffffff;
   cursor: pointer;
-  font-size: 0.8em;
+  font-size: 1em;
   &:hover{
     background: #fff;
-    color: #C20114;
+    color: #AD343E;
   }
 `
 
 const ButtonUpdate = styled.button`
   border: none;
   border-radius: 15px;
-  width: 15vw;
-  height: 5vh;
-  background-color: #474973;
+  width: 10em;
+  height: 3vh;
+  background-color: #F2AF29;
   color: #ffffff;
   cursor: pointer;
-  font-size: 0.8em;
+  font-size: 1em;
   &:hover{
     background: #ffffff;
     color: #0D0C1D;
@@ -104,7 +104,7 @@ const Post = (props) =>{
             {post.content}<br/>
             {post.tag}
           </Paragraph>
-          <Link href={post.link}>{post.link}</Link>
+          <Link href={post.link}> {post.link}</Link>
           <Actions>
             <ButtonRemove onClick={() => {remove(post.id)}}> Remove </ButtonRemove>
             <ButtonUpdate onClick={() => setShow(!show)}> Update </ButtonUpdate>
