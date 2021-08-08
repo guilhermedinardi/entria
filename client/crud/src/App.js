@@ -9,32 +9,33 @@ import styled from 'styled-components'
 
 const Section = styled.div`
   font-family: 'Work Sans', sans-serif;
-  max-width: 1140px;
   margin: 0px auto;
   padding: 20px;
+  max-width: 1280px;
 `
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding: 1em;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 1em;
 `
 const Title = styled.p`
-  width: 60%;
-  font-size: 1.5em;
+  width: 50%;
+  font-size: 1.2em;
   letter-spacing: 0.5px;
   color: #161B33;
 `
 const ButtonAddPost = styled.button`
   border: none;
   border-radius: 15px;
-  width: 10em;
-  height: 2.5em;
-  background-color: #A69CAC;
-  color: #ffffff;
+  width: 6em;
+  height: 5vh;
+  background-color: #F7F7F3;
+  color: #000000;
   cursor: pointer;
-  font-size: 0.9em;
+  font-size: 1.2em;
+  font-weight: 700;
   &:hover{
     background: #ffffff;
     color: #161B33;
