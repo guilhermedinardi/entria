@@ -57,4 +57,8 @@ $ yarn start
 # A aplicação será aberta na porta:3000 - acesse http://localhost:3000
 
 ```
+## 🎥 Aplicação rodando
+![Untitled (1)](https://user-images.githubusercontent.com/41477286/128784421-31fd379c-9044-4bc0-9221-8b64e8ca8181.gif)
+
+
 
