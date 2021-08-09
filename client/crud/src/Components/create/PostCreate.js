@@ -93,6 +93,7 @@ const PostCreate = (props) => {
 			title={"title"}
 			type={"text"}
 			placeholder={"Title"}
+			required={"true"}
 			/>
 			
 			<Content 
@@ -101,6 +102,7 @@ const PostCreate = (props) => {
 			title={"Content"}
 			type={"text"}
 			placeholder={"Content"}
+			required={"true"}
 			/>
 			
 			<Input 
@@ -109,6 +111,7 @@ const PostCreate = (props) => {
 			title={"tag"}
 			type={"text"}
 			placeholder={"Tag"}
+			required={"true"}
 			/>
 			
 			<Input 
@@ -117,9 +120,10 @@ const PostCreate = (props) => {
 			title={"Link"}
 			type={"text"}
 			placeholder={"Link"}
+			required={"true"}
 			/>
-			<Button type='submit'>
-					+Add Tool
+			<Button type=''>
+				+Add Tool
 			</Button>
 		</Form>
 	)
