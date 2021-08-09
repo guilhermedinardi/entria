@@ -78,6 +78,7 @@ const PostUpdate = (props) => {
       title={"title"}
       type={"text"}
       placeholder={"Title"}
+      required={"true"}
       />
         
       <Content 
@@ -86,6 +87,7 @@ const PostUpdate = (props) => {
       title={"Content"}
       type={"text"}
       placeholder={"Content"}
+      required={"true"}
       />
       
       <Input 
@@ -94,6 +96,7 @@ const PostUpdate = (props) => {
       title={"tag"}
       type={"text"}
       placeholder={"Tag"}
+      required={"true"}
       />
       
       <Input 
@@ -102,6 +105,7 @@ const PostUpdate = (props) => {
       title={"Link"}
       type={"text"}
       placeholder={"Link"}
+      required={"true"}
       />
       <Button type='submit'>
         Update
