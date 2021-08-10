@@ -50,7 +50,6 @@ const Button = styled.button`
 		background: #ffffff;
 		color: #474747;
 }
-
 `
 
 const PostCreate = () => {
