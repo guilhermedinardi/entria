@@ -55,7 +55,6 @@ const PostHome = (props) => {
           edges {
             node {
              ...PostList_viewer
-             ...PostCreate_post
             }
           }
         }
