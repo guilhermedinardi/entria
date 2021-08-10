@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import graphql from 'babel-plugin-relay/macro';
-import { useFragment } from 'react-relay';
+/* import graphql from 'babel-plugin-relay/macro';
+import { useFragment } from 'react-relay'; */
 import styled from 'styled-components';
 
 import { default as usePostCreateMutation } from './PostCreateMutation'
@@ -53,19 +53,7 @@ const Button = styled.button`
 
 `
 
-const PostCreate = (props) => {
-	const post = useFragment(
-		graphql` 
-			fragment PostCreate_post on Post {
-					title
-					content
-					tag
-					link
-					id
-			},
-		`,
-		props.post,
-	); 
+const PostCreate = () => {
 
 	const [title, setTitle] = useState('')
 	const [content, setContent] = useState('')
