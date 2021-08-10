@@ -2,9 +2,9 @@ import { React, useState } from 'react';
 import {  useLazyLoadQuery } from 'react-relay';
 import graphql from 'babel-plugin-relay/macro';
 
-import Modal from './components/modal/Modal'
-import PostCreate from './components/create/PostCreate'
-import PostHome from './components/PostHome'
+import Modal from './Components/modal/Modal'
+import PostCreate from './Components/create/PostCreate'
+import PostHome from './Components/PostHome'
 import styled from 'styled-components'
 
 const Section = styled.div`
